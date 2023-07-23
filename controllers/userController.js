@@ -24,6 +24,15 @@ module.exports = {
     }
   },
 
+  async createUser(req, res) {
+    try {
+      const userData = await User.create(req.body);
+      res.status(200).json(userData);
+    } catch (err) {
+      res.status(500).json(err);
+    }
+  },
+
   async updateUser(req, res) {
     try {
       const user = await User.findByIdAndUpdate(
