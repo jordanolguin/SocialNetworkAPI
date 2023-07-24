@@ -24,7 +24,7 @@ module.exports = {
   },
   async createThought(req, res) {
     try {
-      const thoughtData = await Thought.findOne({ _id: req.params.thoughtId });
+      const thoughtData = await Thought.create(req.body);
       const user = await User.findOneAndUpdate(
         { username: req.body.username },
         { $addToSet: { thoughts: thoughtData._id } },
